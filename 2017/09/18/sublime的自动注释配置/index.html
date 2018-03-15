@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工具使用," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前言为了在sublime编辑器中能通过快捷键自动为js文件、类、函数等添加符合jsdoc规范的注释，需要安装的相关的插件，并进行自定义的配置。现将安装和配置的过程记录如下，以备不时之需。 文件头注释由于sublime的DocBlockr插件只支持对函数、变量的快捷注释，不能增加文件头注释，因此需要安装File header插件。 安装插件sumlime安装插件的方式：   ctrl+shift+p">
+<meta name="keywords" content="工具使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sublime的自动注释配置">
+<meta property="og:url" content="https://madshawn.github.io/2017/09/18/sublime的自动注释配置/index.html">
+<meta property="og:site_name" content="MadShawn&#39;s Pages">
+<meta property="og:description" content="前言为了在sublime编辑器中能通过快捷键自动为js文件、类、函数等添加符合jsdoc规范的注释，需要安装的相关的插件，并进行自定义的配置。现将安装和配置的过程记录如下，以备不时之需。 文件头注释由于sublime的DocBlockr插件只支持对函数、变量的快捷注释，不能增加文件头注释，因此需要安装File header插件。 安装插件sumlime安装插件的方式：   ctrl+shift+p">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T05:57:03.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sublime的自动注释配置">
+<meta name="twitter:description" content="前言为了在sublime编辑器中能通过快捷键自动为js文件、类、函数等添加符合jsdoc规范的注释，需要安装的相关的插件，并进行自定义的配置。现将安装和配置的过程记录如下，以备不时之需。 文件头注释由于sublime的DocBlockr插件只支持对函数、变量的快捷注释，不能增加文件头注释，因此需要安装File header插件。 安装插件sumlime安装插件的方式：   ctrl+shift+p">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://madshawn.github.io/2017/09/18/sublime的自动注释配置/"/>
+
+
+
+
+
+  <title>sublime的自动注释配置 | MadShawn's Pages</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MadShawn's Pages</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">First github page</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/./archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-vuetest">
+          <a href="https://madshawn.github.io/VueTest" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            VueTest
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidu">
+          <a href="http://www.baidu.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            百度
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://madshawn.github.io/2017/09/18/sublime的自动注释配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MadShawn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MadShawn's Pages">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sublime的自动注释配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-18T23:14:43+08:00">
+                2017-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为了在sublime编辑器中能通过快捷键自动为js文件、类、函数等添加符合jsdoc规范的注释，需要安装的相关的插件，并进行自定义的配置。现将安装和配置的过程记录如下，以备不时之需。</p>
+<h2 id="文件头注释"><a href="#文件头注释" class="headerlink" title="文件头注释"></a>文件头注释</h2><p>由于sublime的DocBlockr插件只支持对函数、变量的快捷注释，不能增加文件头注释，因此需要安装File header插件。</p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>sumlime安装插件的方式：</p>
+<blockquote>
+<ol>
+<li>ctrl+shift+p组合键，或 prefences &gt; package control 者打开包管理窗口</li>
+<li>输入 install package打开包安装窗口</li>
+<li>输入 file header进行包搜索</li>
+<li>选中fileheader插件启动安装</li>
+</ol>
+</blockquote>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><ol>
+<li>在sublime菜单栏，点击 prefences &gt; browse packages 打开包目录</li>
+<li>打开FileHeader &gt; template &gt; header 文件夹</li>
+<li><p>找到javascript.tmpl文件，添加如下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* [Description]</span></span><br><span class="line"><span class="comment">* @file       &#123;&#123;file_name&#125;&#125;</span></span><br><span class="line"><span class="comment">* @author     xxxx</span></span><br><span class="line"><span class="comment">* @date       &#123;&#123;create_time&#125;&#125;</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* @copyright: @Navinfo, all rights reserved.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：模版最后要加入三个空行，这样在js文件中插入此注释后才会加入一个空行</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="插件的使用"><a href="#插件的使用" class="headerlink" title="插件的使用"></a>插件的使用</h3><p>可以在sublime的菜单 prefences &gt; package settings &gt; File Header &gt; key bingding-Default中，修改该插件的快捷键。你当然也可以直接用默认的。<br>这里我们将command ‘file_header_add_header’ 的快捷键修改为 ‘ctrl+alt+h’。<br>这样，在打开一个js文件后，按’ctrl+alt+h’组合键会打开为当前文件添加文件头注释的窗口，按enter即可完成文件头注释的插入。</p>
+<h2 id="函数注释"><a href="#函数注释" class="headerlink" title="函数注释"></a>函数注释</h2><h3 id="安装插件-1"><a href="#安装插件-1" class="headerlink" title="安装插件"></a>安装插件</h3><p>安装sublime的DocBlockr插件，安装方法参考上一节</p>
+<h3 id="修改配置-1"><a href="#修改配置-1" class="headerlink" title="修改配置"></a>修改配置</h3><p>在sumlime菜单栏，打开 prefences &gt; package settings &gt; DocBlockr &gt; settings-user，打开用户配置文件，增加以下配置：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"jsdocs_extra_tags"</span>: [<span class="string">"@author XXXX"</span>, <span class="string">"@date &#123;&#123;date&#125;&#125;"</span>],</span><br><span class="line">    <span class="attr">"jsdocs_notation_map"</span>: [&#123;</span><br><span class="line">        <span class="attr">"prefix"</span>: <span class="string">"_"</span>,</span><br><span class="line">        <span class="attr">"tags"</span>: [<span class="string">"@private"</span>]</span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="attr">"jsdocs_autoadd_method_tag"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>配置的详细说明可参考README文件：prefences &gt; package settings &gt; DocBlockr &gt; README</p>
+</blockquote>
+<h3 id="插件的使用-1"><a href="#插件的使用-1" class="headerlink" title="插件的使用"></a>插件的使用</h3><p>在需要增加注释的函数/变量定义的上一行，输入 <code>/**</code> ，然后按 <code>Enter</code> 键，即可添加默认的注释信息。<br>需要手工补充<em>函数</em>、<em>参数</em>和<em>返回值</em>的数<strong>据类型</strong>和<strong>描述</strong>。</p>
+<h2 id="批量增加函数注释"><a href="#批量增加函数注释" class="headerlink" title="批量增加函数注释"></a>批量增加函数注释</h2><p>smartcomments是一个nodejs写的给文件的所有函数增加注释的工具，详细的说明可参考 <a href="http://smartcomments.github.io/" target="_blank" rel="noopener">smartcomment主页</a> 和 <a href="https://github.com/smartcomments/smartcomments" target="_blank" rel="noopener">github地址</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code>npm install -g smartcomments
+</code></pre><h3 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h3><p>默认的配置只支持4个@tag，不满足我们的注释需求，因此需要自定义。可以在需要批量加注释的项目下新建两个文件，smartcomments.json和templates.js，这里就不再做过多说明，直接贴出代码：</p>
+<ul>
+<li><p>smartcomments.json</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"target_dir"</span>: [</span><br><span class="line">        <span class="string">""</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"match_files"</span>: [</span><br><span class="line">        <span class="string">"^((?!~).)*.(js)$"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"backup"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"private"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"favor_generated"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"tags"</span>: &#123;</span><br><span class="line">        <span class="attr">"function"</span>: &#123;</span><br><span class="line">            <span class="attr">"name"</span>: &#123;&#125;,</span><br><span class="line">            <span class="attr">"desc"</span>: &#123;</span><br><span class="line">                // 函数的默认描述</span><br><span class="line">                "value": "[Auto generated description]"</span><br><span class="line">            &#125;,</span><br><span class="line">            "author": &#123;</span><br><span class="line">                // 要指定的作者名字</span><br><span class="line">                "value": "XXXX"</span><br><span class="line">            &#125;,</span><br><span class="line">            "date": &#123;&#125;,</span><br><span class="line">            "params": &#123;&#125;,</span><br><span class="line">            "rtrn": &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 这里指向自定义的模版文件，要给出绝对地址，否则找不到</span><br><span class="line">    "template": "E:\\xxxx\\template.js"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>template.js<br>  可以从smartcomments的<a href="https://github.com/smartcomments/smartcomments/blob/master/templates/default.js" target="_blank" rel="noopener">github库</a>中看到默认的default.js，拷贝一份命名为template.js，然后修改其中的 buildComment 函数即可，修改后的代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">buildComment: <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance = templateInstance,                  <span class="comment">// BaseTemplate instance</span></span><br><span class="line">        config = instance.config,                      <span class="comment">// User current config</span></span><br><span class="line">        options = config.tags.function,      <span class="comment">// Custom functions tags options</span></span><br><span class="line">        pos,                                           <span class="comment">// Empty comment obj</span></span><br><span class="line">        comment = &#123;</span><br><span class="line">            pos: data.pos,</span><br><span class="line">            tags: []</span><br><span class="line">        &#125;,</span><br><span class="line">        methodName = data.name,</span><br><span class="line">        node = data.node;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (config.private) === <span class="string">'undefined'</span></span><br><span class="line">        || config.private</span><br><span class="line">        || !<span class="regexp">/^_/</span>.test(methodName)) &#123;</span><br><span class="line">        <span class="comment">// Description statement</span></span><br><span class="line">        <span class="keyword">if</span> (options.desc) &#123;</span><br><span class="line">            comment.tags.push(&#123;</span><br><span class="line">                name: <span class="string">''</span>,</span><br><span class="line">                value: options.desc.value || <span class="string">'Function description'</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// @method statement</span></span><br><span class="line">        <span class="keyword">if</span> (methodName &amp;&amp; options.name) &#123;</span><br><span class="line">            comment.tags.push(&#123;</span><br><span class="line">                name: <span class="string">'@method'</span>,</span><br><span class="line">                value: methodName</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 增加作者tag</span></span><br><span class="line">        <span class="comment">// Author statement</span></span><br><span class="line">        <span class="keyword">if</span> (options.author) &#123;</span><br><span class="line">            comment.tags.push(&#123;</span><br><span class="line">                name: <span class="string">'@author'</span>,</span><br><span class="line">                value: options.author.value || <span class="string">'XXX'</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 增加日期tag</span></span><br><span class="line">        <span class="comment">// Date statement</span></span><br><span class="line">        <span class="keyword">if</span> (options.date) &#123;</span><br><span class="line">            comment.tags.push(&#123;</span><br><span class="line">                name: <span class="string">'@date'</span>,</span><br><span class="line">                value: <span class="string">'  '</span> + (options.date.value || <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleDateString())</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> size,</span><br><span class="line">            i = <span class="number">0</span>,</span><br><span class="line">            value;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// @param statement</span></span><br><span class="line">        <span class="keyword">if</span> (options.params) &#123;</span><br><span class="line">            <span class="keyword">var</span> array = node.params;</span><br><span class="line">            size = array.length;</span><br><span class="line">            <span class="keyword">for</span> (i; i &lt; size; i++) &#123;</span><br><span class="line">                value = <span class="string">' &#123;[type]&#125; '</span> + array[i].name + <span class="string">' [description]'</span>;</span><br><span class="line">                comment.tags.push(&#123;</span><br><span class="line">                    name: <span class="string">'@param'</span>,</span><br><span class="line">                    value: value</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// @return statement</span></span><br><span class="line">        <span class="keyword">if</span> (options.rtrn) &#123;</span><br><span class="line">            <span class="keyword">var</span> elements = node.body.body;</span><br><span class="line">            <span class="keyword">if</span> (elements) &#123;</span><br><span class="line">                size = elements.length;</span><br><span class="line">                value = <span class="string">''</span>;</span><br><span class="line">                <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (elements[i].type === <span class="string">'ReturnStatement'</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (elements[i].argument) &#123;</span><br><span class="line">                            value = <span class="string">'&#123;[type]&#125; [description]'</span>;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!value) &#123;</span><br><span class="line">                    value = <span class="string">'&#123;Undefined&#125; 无返回值'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                comment.tags.push(&#123;</span><br><span class="line">                    name: <span class="string">'@return'</span>,</span><br><span class="line">                    value: value</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (comment.pos &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// Add comment to comment_list</span></span><br><span class="line">            instance.comments_list.push(comment);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="修改smartcomments源代码"><a href="#修改smartcomments源代码" class="headerlink" title="修改smartcomments源代码"></a>修改smartcomments源代码</h3><p>最重要的部分来了。不得不吐槽一下smartcomments的源代码，真的代码烂烂，bug多多。。。<br>由于smartcomments是用npm全局安装的，这里就需要修改全局包中的代码。查看npm全局包安装目录的命令：</p>
+<pre><code>npm config get prefix
+</code></pre><p>然后修改[prefix]\node_modules\smartcomments\lib\smartcomments.js文件。修改的内容比较多，就不一一说明了，主要修改了4个函数，直接上代码：</p>
+<blockquote>
+<p>修改之前备份一下是个好习惯</p>
+</blockquote>
+<ol>
+<li><p>mergeSrcAndGeneratedComment</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">mergeSrcAndGeneratedComment: <span class="function"><span class="keyword">function</span> (<span class="params">instance, generatedComment, favorGenerated</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> srcComment = generatedComment.srcComment,</span><br><span class="line">        mergedCommentLines = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// process each src comment line, and remove matching comments from generatedComment</span></span><br><span class="line">    <span class="keyword">var</span> srcCommentTags = _.map(srcComment.value.split(<span class="regexp">/\r?\n/</span>), <span class="function"><span class="keyword">function</span> (<span class="params">commentLine</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance.parseTagNameValue(commentLine);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    _.each(generatedComment.tags, <span class="function"><span class="keyword">function</span> (<span class="params">tag</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (favorGenerated) &#123;</span><br><span class="line">            mergedCommentLines.push(tag);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> srcTag;</span><br><span class="line">            <span class="keyword">var</span> f = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">var</span> desc = [];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; srcCommentTags.length; i++) &#123;</span><br><span class="line">                srcTag = srcCommentTags[i];</span><br><span class="line">                <span class="keyword">if</span> (tag.name === <span class="string">''</span> &amp;&amp; (srcTag.name === <span class="string">''</span> || srcTag.name === <span class="string">'@description'</span>)) &#123;</span><br><span class="line">                    desc.push(srcTag.value);</span><br><span class="line">                    f = <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (srcTag.name === tag.name) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (tag.name === <span class="string">'@param'</span>) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (instance.isSameParam(srcTag.value, tag.value)) &#123;</span><br><span class="line">                            f = <span class="literal">true</span>;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        f = <span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!f) &#123;</span><br><span class="line">                mergedCommentLines.push(tag);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (tag.name === <span class="string">''</span>) &#123;</span><br><span class="line">                    tag.value = desc.join(<span class="string">''</span>);</span><br><span class="line">                    mergedCommentLines.push(tag);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    mergedCommentLines.push(srcTag);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    instance.mergeOtherSrcTags(srcCommentTags, mergedCommentLines);</span><br><span class="line">    generatedComment.tags = mergedCommentLines;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>parseTagNameValue</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">parseTagNameValue: <span class="function"><span class="keyword">function</span> (<span class="params">commentLine</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> clean = commentLine.replace(<span class="regexp">/^\s*\*?\s?/</span>, <span class="string">''</span>); <span class="comment">// strip leading ' * '</span></span><br><span class="line">    <span class="keyword">var</span> nameValueMatch = <span class="regexp">/^(?:(@\w+))?([^\r\n]*)/</span>.exec(clean);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        name: nameValueMatch[<span class="number">1</span>] || <span class="string">''</span>,</span><br><span class="line">        value: nameValueMatch[<span class="number">2</span>] || <span class="string">''</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>isSameParam</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">isSameParam: <span class="function"><span class="keyword">function</span> (<span class="params">srcValue, genValue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> stripTypeRe = <span class="regexp">/\S*\s*\&#123;\[?[\w:-]*\]?\&#125;\s*/</span>,</span><br><span class="line">        matchValRe = <span class="regexp">/^[\w:-]+/</span>;</span><br><span class="line">    srcValue = srcValue.replace(stripTypeRe, <span class="string">''</span>);</span><br><span class="line">    genValue = genValue.replace(stripTypeRe, <span class="string">''</span>);</span><br><span class="line">    srcValue = matchValRe.exec(srcValue);</span><br><span class="line">    genValue = matchValRe.exec(genValue);</span><br><span class="line">    <span class="keyword">if</span> (srcValue &amp;&amp; genValue) &#123;</span><br><span class="line">        srcValue = srcValue[<span class="number">0</span>];</span><br><span class="line">        genValue = genValue[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (srcValue) &#123;</span><br><span class="line">            <span class="keyword">return</span> (genValue &amp;&amp; srcValue === genValue);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> !genValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mergeOtherSrcTags</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mergeOtherSrcTags: <span class="function"><span class="keyword">function</span> (<span class="params">srcCommentTags, mergedCommentLines</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> k;</span><br><span class="line">    <span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; mergedCommentLines.length &amp;&amp; mergedCommentLines[k].name !== <span class="string">'@method'</span>; k++);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> temp = mergedCommentLines.slice();</span><br><span class="line"></span><br><span class="line">    _.each(srcCommentTags, <span class="function"><span class="keyword">function</span> (<span class="params">srcTag</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> f = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; temp.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (srcTag.name === temp[i].name || (srcTag.name === <span class="string">'@description'</span> &amp;&amp; temp[i].name === <span class="string">''</span>)) &#123;</span><br><span class="line">                f = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!f) &#123;</span><br><span class="line">            mergedCommentLines.splice(k++, <span class="number">0</span>, srcTag);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="smartcomments的使用"><a href="#smartcomments的使用" class="headerlink" title="smartcomments的使用"></a>smartcomments的使用</h3><ol>
+<li><p>使用默认配置</p>
+<pre><code>smartcomments --generate
+</code></pre><blockquote>
+<p>注意：会对执行此命令的目录下所有js文件增加函数注释，会递归遍历所有子目录</p>
+</blockquote>
+</li>
+<li><p>使用自定义配置</p>
+<pre><code>smartcomments --generate -c ./comments/smartcomments.json
+</code></pre><blockquote>
+<p>如果把自定义配置文件放置在执行此命令的目录下，并命名为smartcomments.json时，则可以不用指定-c参数，程序会自动识别；如果在配置文件在其他目录，则需要指定</p>
+</blockquote>
+</li>
+<li><p>指定要增加注释的文件/目录</p>
+<pre><code>smartcomments --generate -c ./comments/smartcomments.json -t ./apps/editorCtrl.js
+</code></pre><blockquote>
+<p>可以指定文件，也可以指定目录</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具使用/" rel="tag"># 工具使用</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/11/Javascript注释规范/" rel="next" title="Javascript注释规范">
+                <i class="fa fa-chevron-left"></i> Javascript注释规范
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/27/vue-cesium的项目搭建/" rel="prev" title="vue+cesium的项目搭建">
+                vue+cesium的项目搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">MadShawn</p>
+            <p class="site-description motion-element" itemprop="description">不知道要写点啥</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/./archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件头注释"><span class="nav-number">2.</span> <span class="nav-text">文件头注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件"><span class="nav-number">2.1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置"><span class="nav-number">2.2.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件的使用"><span class="nav-number">2.3.</span> <span class="nav-text">插件的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数注释"><span class="nav-number">3.</span> <span class="nav-text">函数注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装插件-1"><span class="nav-number">3.1.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改配置-1"><span class="nav-number">3.2.</span> <span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件的使用-1"><span class="nav-number">3.3.</span> <span class="nav-text">插件的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量增加函数注释"><span class="nav-number">4.</span> <span class="nav-text">批量增加函数注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义配置"><span class="nav-number">4.2.</span> <span class="nav-text">自定义配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改smartcomments源代码"><span class="nav-number">4.3.</span> <span class="nav-text">修改smartcomments源代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#smartcomments的使用"><span class="nav-number">4.4.</span> <span class="nav-text">smartcomments的使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MadShawn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

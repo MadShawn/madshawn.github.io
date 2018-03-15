@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工作计划," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="17年下半年的主要任务 WebApp代码加注释 mapApi的代码、注释改善，对外开放api 日编平台 月编平台 代理店平台 元数据平台 代码的es6重构 产品、代码改善 课题研究 新技术的学习  工作安排WebApp代码加注释 参与人：全组 时间：9.11-9.15，一周时间 由cx给出样例，主要包含文件头注释、类注释、函数注释三种，文件头注释我们自定义，其他两种注释要完全符合jsdoc规范，以">
+<meta name="keywords" content="工作计划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web组工作安排">
+<meta property="og:url" content="https://madshawn.github.io/2017/09/09/Web组工作安排/index.html">
+<meta property="og:site_name" content="MadShawn&#39;s Pages">
+<meta property="og:description" content="17年下半年的主要任务 WebApp代码加注释 mapApi的代码、注释改善，对外开放api 日编平台 月编平台 代理店平台 元数据平台 代码的es6重构 产品、代码改善 课题研究 新技术的学习  工作安排WebApp代码加注释 参与人：全组 时间：9.11-9.15，一周时间 由cx给出样例，主要包含文件头注释、类注释、函数注释三种，文件头注释我们自定义，其他两种注释要完全符合jsdoc规范，以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T05:57:03.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web组工作安排">
+<meta name="twitter:description" content="17年下半年的主要任务 WebApp代码加注释 mapApi的代码、注释改善，对外开放api 日编平台 月编平台 代理店平台 元数据平台 代码的es6重构 产品、代码改善 课题研究 新技术的学习  工作安排WebApp代码加注释 参与人：全组 时间：9.11-9.15，一周时间 由cx给出样例，主要包含文件头注释、类注释、函数注释三种，文件头注释我们自定义，其他两种注释要完全符合jsdoc规范，以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://madshawn.github.io/2017/09/09/Web组工作安排/"/>
+
+
+
+
+
+  <title>Web组工作安排 | MadShawn's Pages</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MadShawn's Pages</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">First github page</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/./archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-vuetest">
+          <a href="https://madshawn.github.io/VueTest" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            VueTest
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidu">
+          <a href="http://www.baidu.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            百度
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://madshawn.github.io/2017/09/09/Web组工作安排/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MadShawn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MadShawn's Pages">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web组工作安排</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T01:03:39+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="17年下半年的主要任务"><a href="#17年下半年的主要任务" class="headerlink" title="17年下半年的主要任务"></a>17年下半年的主要任务</h1><ol>
+<li>WebApp代码加注释</li>
+<li>mapApi的代码、注释改善，对外开放api</li>
+<li>日编平台</li>
+<li>月编平台</li>
+<li>代理店平台</li>
+<li>元数据平台</li>
+<li>代码的es6重构</li>
+<li>产品、代码改善</li>
+<li>课题研究</li>
+<li>新技术的学习</li>
+</ol>
+<h1 id="工作安排"><a href="#工作安排" class="headerlink" title="工作安排"></a>工作安排</h1><h3 id="WebApp代码加注释"><a href="#WebApp代码加注释" class="headerlink" title="WebApp代码加注释"></a>WebApp代码加注释</h3><ul>
+<li>参与人：全组</li>
+<li>时间：9.11-9.15，一周时间<blockquote>
+<p>由cx给出样例，主要包含<strong><em>文件头注释</em></strong>、<strong><em>类注释</em></strong>、<strong><em>函数注释</em></strong>三种，文件头注释我们自定义，其他两种注释要完全符合jsdoc规范，以便后期自动生成文档</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="MapApi的代码、注释改善"><a href="#MapApi的代码、注释改善" class="headerlink" title="MapApi的代码、注释改善"></a>MapApi的代码、注释改善</h3><ul>
+<li>参与人： ll</li>
+<li>时间：9.11-9.15，先按一周来算，可能不够<blockquote>
+<p>主要目标是加深对mapApi原理、结构和代码的理解，可以先边读代码，边加注释，先理解，然后才能维护和改善。注释的方式参考前一节。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="日编平台"><a href="#日编平台" class="headerlink" title="日编平台"></a>日编平台</h3><ul>
+<li>参与人： ll,wmd,lz</li>
+<li>时间：长期<blockquote>
+<p>主要负责日编的维护和新功能开发，ll主参与，md和lz部分参与</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="月编平台"><a href="#月编平台" class="headerlink" title="月编平台"></a>月编平台</h3><ul>
+<li>参与人：wz,ml,lz,wmd</li>
+<li>时间：长期<blockquote>
+<p>由wz带队开发，ml主参与，lz和md部分参与</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="代理店平台"><a href="#代理店平台" class="headerlink" title="代理店平台"></a>代理店平台</h3><ul>
+<li>参与人：wz,随机</li>
+<li>时间：长期<blockquote>
+<p>wz主负责，视任务情况随机安排其他人参</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="元数据平台"><a href="#元数据平台" class="headerlink" title="元数据平台"></a>元数据平台</h3><ul>
+<li>参与人：ml，随机</li>
+<li>时间：长期<blockquote>
+<p>ml主负责，视任务情况随机安排其他人参</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="代码的es6重构"><a href="#代码的es6重构" class="headerlink" title="代码的es6重构"></a>代码的es6重构</h3><p>对代码进行es6语法的改写，用Class、module等对底层代码进行重构，方便以后更好的调用。先从dataApi、mapRender开始。</p>
+<ul>
+<li>参与人： 全组</li>
+<li>时间：915之后，预计用时2周<blockquote>
+<p>cx先确定一个重构方案，确定类的写法、类的继承关系的实现等等</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="产品、代码改善"><a href="#产品、代码改善" class="headerlink" title="产品、代码改善"></a>产品、代码改善</h3><ul>
+<li>产品功能以及代码改善<ul>
+<li>定期对目前所有实现的内容进行review，包括功能、代码、注释，发现问题改善问题，争取用一段时间把所有功能过一遍</li>
+</ul>
+</li>
+<li>地图渲染优化<ul>
+<li>短期：优化细节渲染函数，不断调优</li>
+<li>长期：考虑webGL整体替换</li>
+</ul>
+</li>
+<li><p>界面加载优化</p>
+<ul>
+<li>短期：合并相关JS和css代码，合并图标</li>
+<li>长期：考虑相关代码改动频率，适时调整缓存策略</li>
+</ul>
+</li>
+<li><p>参与人： 全组</p>
+</li>
+</ul>
+<h3 id="课题研究"><a href="#课题研究" class="headerlink" title="课题研究"></a>课题研究</h3><p>目前想到的有以下两个课题</p>
+<ol>
+<li>地图的加载渲染方式</li>
+<li>地图渲染压盖，要素内部、要素之间的</li>
+</ol>
+<ul>
+<li>参与人：cx，其他人感兴趣可参与</li>
+<li>时间：17年底</li>
+</ul>
+<h3 id="新技术学习"><a href="#新技术学习" class="headerlink" title="新技术学习"></a>新技术学习</h3><ul>
+<li>webgl,mapboxgl    –必须学</li>
+<li>vue</li>
+<li>react, react-native</li>
+<li>app开发</li>
+<li>服务端程序开发，java/python/nodejs？</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工作计划/" rel="tag"># 工作计划</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/06/first-page/" rel="next" title="Hexo入门">
+                <i class="fa fa-chevron-left"></i> Hexo入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/11/Javascript注释规范/" rel="prev" title="Javascript注释规范">
+                Javascript注释规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">MadShawn</p>
+            <p class="site-description motion-element" itemprop="description">不知道要写点啥</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/./archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#17年下半年的主要任务"><span class="nav-number">1.</span> <span class="nav-text">17年下半年的主要任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作安排"><span class="nav-number">2.</span> <span class="nav-text">工作安排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WebApp代码加注释"><span class="nav-number">2.0.1.</span> <span class="nav-text">WebApp代码加注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapApi的代码、注释改善"><span class="nav-number">2.0.2.</span> <span class="nav-text">MapApi的代码、注释改善</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日编平台"><span class="nav-number">2.0.3.</span> <span class="nav-text">日编平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#月编平台"><span class="nav-number">2.0.4.</span> <span class="nav-text">月编平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理店平台"><span class="nav-number">2.0.5.</span> <span class="nav-text">代理店平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元数据平台"><span class="nav-number">2.0.6.</span> <span class="nav-text">元数据平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码的es6重构"><span class="nav-number">2.0.7.</span> <span class="nav-text">代码的es6重构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#产品、代码改善"><span class="nav-number">2.0.8.</span> <span class="nav-text">产品、代码改善</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#课题研究"><span class="nav-number">2.0.9.</span> <span class="nav-text">课题研究</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新技术学习"><span class="nav-number">2.0.10.</span> <span class="nav-text">新技术学习</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MadShawn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

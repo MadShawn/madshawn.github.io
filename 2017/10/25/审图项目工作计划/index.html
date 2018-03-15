@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="工作计划," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前言接到一个审图的项目，功能较小，打算我们包揽前后端以及数据库，这里列一下大体的工作安排和计划。 时间和资源 时间设计3天，10月27日出设计开发3周，10.30-11.17 人员两个人：wz，ll  工作计划设计 负责人： cx  技术选型 前端框架vue 地图组件mapbox-gl 服务框架nodejs-express  功能设计这里首先澄清两个概念：管理员录入的问题，我们称之为 案例（Cas">
+<meta name="keywords" content="工作计划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="审图项目工作计划">
+<meta property="og:url" content="https://madshawn.github.io/2017/10/25/审图项目工作计划/index.html">
+<meta property="og:site_name" content="MadShawn&#39;s Pages">
+<meta property="og:description" content="前言接到一个审图的项目，功能较小，打算我们包揽前后端以及数据库，这里列一下大体的工作安排和计划。 时间和资源 时间设计3天，10月27日出设计开发3周，10.30-11.17 人员两个人：wz，ll  工作计划设计 负责人： cx  技术选型 前端框架vue 地图组件mapbox-gl 服务框架nodejs-express  功能设计这里首先澄清两个概念：管理员录入的问题，我们称之为 案例（Cas">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T05:57:03.807Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="审图项目工作计划">
+<meta name="twitter:description" content="前言接到一个审图的项目，功能较小，打算我们包揽前后端以及数据库，这里列一下大体的工作安排和计划。 时间和资源 时间设计3天，10月27日出设计开发3周，10.30-11.17 人员两个人：wz，ll  工作计划设计 负责人： cx  技术选型 前端框架vue 地图组件mapbox-gl 服务框架nodejs-express  功能设计这里首先澄清两个概念：管理员录入的问题，我们称之为 案例（Cas">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://madshawn.github.io/2017/10/25/审图项目工作计划/"/>
+
+
+
+
+
+  <title>审图项目工作计划 | MadShawn's Pages</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MadShawn's Pages</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">First github page</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/./archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-vuetest">
+          <a href="https://madshawn.github.io/VueTest" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            VueTest
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidu">
+          <a href="http://www.baidu.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            百度
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://madshawn.github.io/2017/10/25/审图项目工作计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MadShawn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MadShawn's Pages">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">审图项目工作计划</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-25T22:18:03+08:00">
+                2017-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接到一个审图的项目，功能较小，打算我们包揽前后端以及数据库，这里列一下大体的工作安排和计划。</p>
+<h2 id="时间和资源"><a href="#时间和资源" class="headerlink" title="时间和资源"></a>时间和资源</h2><ul>
+<li>时间<br>设计3天，10月27日出设计<br>开发3周，10.30-11.17</li>
+<li>人员<br>两个人：wz，ll</li>
+</ul>
+<h2 id="工作计划"><a href="#工作计划" class="headerlink" title="工作计划"></a>工作计划</h2><h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><ul>
+<li>负责人： cx</li>
+</ul>
+<h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><ol>
+<li>前端框架<br>vue</li>
+<li>地图组件<br>mapbox-gl</li>
+<li>服务框架<br>nodejs-express</li>
+</ol>
+<h4 id="功能设计"><a href="#功能设计" class="headerlink" title="功能设计"></a>功能设计</h4><p>这里首先澄清两个概念：<br>管理员录入的问题，我们称之为 <strong>案例（Case）</strong><br>作业员针对 <strong>案例(Case)</strong> 录入的问题，我们称之为 <strong>问题（Issue）</strong></p>
+<ul>
+<li>总体功能目标<ol>
+<li>管理员录入案例</li>
+<li>作业员创建项目，并在项目中针对所有案例录入问题</li>
+<li>管理员对作业员录入的项目、问题进行审核</li>
+<li>对于审核不通过的项目和问题作业员要进行修改、重新提交审核</li>
+<li>审核通过的项目直接成为完成的项目</li>
+</ol>
+</li>
+<li>详细设计<ol>
+<li>用户登录</li>
+<li>用户分角色控制，两种角色：管理员和作业员</li>
+<li>管理员要能审核项目，能录入案例；作业员能创建项目、录入项目问题、提交项目；</li>
+<li>实时地图数据查看</li>
+<li>管理员-案例的增删改</li>
+<li>管理员-案例列表，以及逐条查看</li>
+<li>管理员-案例录入支持照片、视频的上传，以及查看</li>
+<li>管理员-案例录入时，支持在地图上标记点位，一个案例对应一个点位，方便定位</li>
+<li>管理员-案例录入保存时，要记录标记点，以及缩放等级，以便查看时对应定位地图</li>
+<li>管理员-案例要分用户存储，即要记录创建用户</li>
+<li>如果在地图上需要手绘图形，可以用jquery的wPaint、Zwibbler等插件</li>
+<li>作业员-能创建、查看项目</li>
+<li>作业员-进入项目后，能看到地图、案例列表（所有的）</li>
+<li>作业员-能针对案例逐条录入问题，能增删改，能上传图片、视频；</li>
+<li>作业员-系统显示案例列表时，要能区分出那些录入了问题，那些没录，方便作业员录入；</li>
+<li>作业员录入完项目的所有案例问题后，可提交项目给指定的管理员进行审核；</li>
+<li>管理员审核项目问题时，系统对案例列表的显示要能体现出案例的问题审核状态：待审核，审核通过，审核不通过；</li>
+<li>管理员可对案例问题执行审核通过、审核不通过操作，不通过时可以录入备注信息；</li>
+</ol>
+</li>
+</ul>
+<h4 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h4><ul>
+<li>管理表<ol>
+<li>用户信息表 （用户，登录token，登录状态）</li>
+<li>角色信息表</li>
+<li>权限信息表</li>
+<li>用户角色关系表</li>
+<li>角色权限关系表</li>
+<li>日志表？</li>
+</ol>
+</li>
+<li>业务表<ol>
+<li>项目信息表（项目ID，项目信息，创建人，创建时间，提交时间，项目状态，审核状态，审核人，审核时间，审核备注）</li>
+<li>项目审核历史表（项目ID，审核人，审核时间，审核状态，审核备注）</li>
+<li>案例信息表(案例ID，案例信息，创建时间，创建的管理员)</li>
+<li>案例问题表（问题ID，项目ID，案例ID，问题内容，问题状态，审核人，审核时间，审核状态，审核备注）；</li>
+<li>问题审核历史表（问题ID，审核人，审核时间，审核状态，审核备注）</li>
+</ol>
+</li>
+</ul>
+<h4 id="接口设计"><a href="#接口设计" class="headerlink" title="接口设计"></a>接口设计</h4><ol>
+<li>登录（om/login）（返回用户信息、角色、权限等）</li>
+<li>项目创建（task/create）</li>
+<li>项目修改（task/update）</li>
+<li>项目删除（task/delete）</li>
+<li>项目列表（task/list）</li>
+<li>项目详情（task/query）</li>
+<li>项目提交（task/submit）</li>
+<li>项目审核通过（task/audit/ok）</li>
+<li>项目审核不通过（task/audit/no）</li>
+<li>案例列表（case/list）</li>
+<li>案例详情（case/query）</li>
+<li>案例新增（case/create）</li>
+<li>案例修改（case/update）</li>
+<li>案例删除（case/delete）</li>
+<li>案例附件上传（case/file/upload）</li>
+<li>案例问题关联列表（issue/case/list）   —用于在项目中显示案例</li>
+<li>案例问题详情（issue/case/query）      —用于在项目中显示案例</li>
+<li>案例问题文件上传（issue/file/upload） —上传问题附件</li>
+<li>案例问题更新（issue/update）          —更新问题案例问题（上传文件后自动执行）</li>
+<li>案例问题审核通过（issue/audit/ok）</li>
+<li>案例问题审核不通过（issue/audit/no）</li>
+</ol>
+<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><blockquote>
+<p>项目分为多期实现<br>第一期, 三周时间，实现管理员录入案例，作业员能针对案例录入问题功能即可。<br>后续逐步实施审核流转功能；</p>
+</blockquote>
+<h4 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h4><ol>
+<li>前后端开发框架搭建；</li>
+<li>实现用户登录，web+服务</li>
+<li>实现项目列表，web+服务</li>
+</ol>
+<h4 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h4><ol>
+<li>地图加载</li>
+<li>案例列表</li>
+<li>案例的增删改查</li>
+<li>项目创建</li>
+<li>项目查询</li>
+<li>案例问题列表</li>
+<li>案例问题的增删改查</li>
+</ol>
+<h4 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h4><ol>
+<li>遗留问题的处理</li>
+<li>用户试用，并提出改善</li>
+<li>对应用户提的改善问题</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工作计划/" rel="tag"># 工作计划</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/27/vue-cesium的项目搭建/" rel="next" title="vue+cesium的项目搭建">
+                <i class="fa fa-chevron-left"></i> vue+cesium的项目搭建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/14/Web代码注释规范/" rel="prev" title="Web代码注释规范">
+                Web代码注释规范 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">MadShawn</p>
+            <p class="site-description motion-element" itemprop="description">不知道要写点啥</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/./archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间和资源"><span class="nav-number">2.</span> <span class="nav-text">时间和资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作计划"><span class="nav-number">3.</span> <span class="nav-text">工作计划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设计"><span class="nav-number">3.1.</span> <span class="nav-text">设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#技术选型"><span class="nav-number">3.1.1.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能设计"><span class="nav-number">3.1.2.</span> <span class="nav-text">功能设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库设计"><span class="nav-number">3.1.3.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口设计"><span class="nav-number">3.1.4.</span> <span class="nav-text">接口设计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发"><span class="nav-number">3.2.</span> <span class="nav-text">开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一周"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一周</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二周"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二周</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三周"><span class="nav-number">3.2.3.</span> <span class="nav-text">第三周</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MadShawn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

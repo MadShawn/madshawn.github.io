@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编码规范," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前言为了规范工作中的代码注释，使得代码注释符合JsDoC规范，从而可以自动生成Api文档，特制定本规范。本规范主要包含以下几个方面的规定：  文件注释 类注释 函数注释 公共变量的注释  文件注释 （必须有）文件注释主要用于对无明确的类结构的文件的注释，比如只有一个大对象定义的文件（如Application.js）、多个全局函数定义的文件（util.js）、Angular的各种对象文件（route">
+<meta name="keywords" content="编码规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript注释规范">
+<meta property="og:url" content="https://madshawn.github.io/2017/09/11/Javascript注释规范/index.html">
+<meta property="og:site_name" content="MadShawn&#39;s Pages">
+<meta property="og:description" content="前言为了规范工作中的代码注释，使得代码注释符合JsDoC规范，从而可以自动生成Api文档，特制定本规范。本规范主要包含以下几个方面的规定：  文件注释 类注释 函数注释 公共变量的注释  文件注释 （必须有）文件注释主要用于对无明确的类结构的文件的注释，比如只有一个大对象定义的文件（如Application.js）、多个全局函数定义的文件（util.js）、Angular的各种对象文件（route">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T05:57:03.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript注释规范">
+<meta name="twitter:description" content="前言为了规范工作中的代码注释，使得代码注释符合JsDoC规范，从而可以自动生成Api文档，特制定本规范。本规范主要包含以下几个方面的规定：  文件注释 类注释 函数注释 公共变量的注释  文件注释 （必须有）文件注释主要用于对无明确的类结构的文件的注释，比如只有一个大对象定义的文件（如Application.js）、多个全局函数定义的文件（util.js）、Angular的各种对象文件（route">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://madshawn.github.io/2017/09/11/Javascript注释规范/"/>
+
+
+
+
+
+  <title>Javascript注释规范 | MadShawn's Pages</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MadShawn's Pages</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">First github page</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/./archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-vuetest">
+          <a href="https://madshawn.github.io/VueTest" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-bug"></i> <br />
+            
+            VueTest
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidu">
+          <a href="http://www.baidu.com" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            百度
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://madshawn.github.io/2017/09/11/Javascript注释规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MadShawn">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MadShawn's Pages">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript注释规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T22:04:49+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>为了规范工作中的代码注释，使得代码注释符合JsDoC规范，从而可以自动生成Api文档，特制定本规范。本规范主要包含以下几个方面的规定：</p>
+<ul>
+<li>文件注释</li>
+<li>类注释</li>
+<li>函数注释</li>
+<li>公共变量的注释</li>
+</ul>
+<h1 id="文件注释-（必须有）"><a href="#文件注释-（必须有）" class="headerlink" title="文件注释 （必须有）"></a>文件注释 （必须有）</h1><p>文件注释主要用于对无明确的类结构的文件的注释，比如只有一个大对象定义的文件（如Application.js）、多个全局函数定义的文件（util.js）、Angular的各种对象文件（route、controller、directive、service等）。注释规范如下：</p>
+<ul>
+<li><p>常规文件</p>
+<pre><code>/**
+ * 定义web app全局命名空间，并在此空间下定义属性和函数，以便全局使用
+ * -author    ChenXiao
+ * -date      2017-09-11
+ *
+ * -copyright @Navinfo, all rights reserved.
+ */
+
+var App = {};
+// web app全局配置信息
+App.Config = {
+    appName: &apos;FM-WebEditor&apos;,
+</code></pre></li>
+<li><p>Angular controller</p>
+<pre><code>/**
+ * 编辑页面的主controller
+ * -author ChenXiao
+ * -date   2017-09-11
+ *
+ * -copyright @Navinfo, all rights reserved.
+ */
+
+angular.module(&apos;app&apos;).controller(&apos;editorCtrl&apos;, [&apos;$scope&apos;, &apos;$rootScope&apos;, &apos;$cookies&apos;, &apos;$timeout&apos;, &apos;$q&apos;,
+    &apos;$ocLazyLoad&apos;, &apos;ngDialog&apos;,
+    &apos;appPath&apos;, &apos;dsMeta&apos;, &apos;dsFcc&apos;, &apos;dsEdit&apos;, &apos;dsManage&apos;, &apos;dsColumn&apos;, &apos;dsLazyload&apos;,
+    function ($scope, $rootScope, $cookies, $timeout, $q, $ocLazyLoad, ngDialog,
+        appPath, dsMeta, dsFcc, dsEdit, dsManage, dsColumn, dsLazyload) {
+        if (!$scope.testLogin()) {
+            return;
+        }
+</code></pre>  <div class="note danger"><p>注释与controller之间必须要有个空行，否则jsdoc会把controller当成函数注释，导致jsdoc报错。</p></div>
+</li>
+</ul>
+<blockquote>
+<p>建议所有的文件头注释与代码之间要加一个空行。</p>
+</blockquote>
+<h1 id="类注释-（必须有，可以替代文件注释）"><a href="#类注释-（必须有，可以替代文件注释）" class="headerlink" title="类注释 （必须有，可以替代文件注释）"></a>类注释 （必须有，可以替代文件注释）</h1><p>类注释主要用于符合类结构的文件的注释，比如通过L.Class创建的模拟类的文件（mapRender、dataApi、uikit下的文件）。由于代码中基本上达到了一个类一个文件的结构，因此可以用类注释替代文件注释。注释的规范如下：</p>
+<pre><code>/**
+ * 交限的前端数据模型
+ * -author ChenXiao
+ * -date   2017-09-11
+ *
+ * -copyright @Navinfo, all rights reserved.
+ */
+FM.dataApi.RdRestrictionDetail = FM.dataApi.Feature.extend({
+    /**
+     * 模型转换主函数，将接口返回的数据转换为前端数据模型
+     * -author ChenXiao
+     * -date   2017-09-11
+     * @param  {object} data 接口返回的数据
+     * @return {undefined}
+     */
+    setAttributes: function (data) {
+        this.geoLiveType = &apos;RDRESTRICTIONDETAIL&apos;;
+        this.pid = data.pid || 0;
+        this.restricPid = data.restricPid || 0;
+        this.outLinkPid = data.outLinkPid || 0;
+</code></pre><h1 id="函数注释-（必须有）"><a href="#函数注释-（必须有）" class="headerlink" title="函数注释 （必须有）"></a>函数注释 （必须有）</h1><p>所有的函数都必须加此注释，要完全符合jsdoc规范。后续会把eslint打开，不符合要求的不予合并。注释规范如下：</p>
+<ul>
+<li><p>一般情况</p>
+<pre><code>/**
+ * 根据的窗口的选项，创建弹出窗口对象
+ * -author ChenXiao
+ * -date   2017-09-11
+ * @param  {object} data 窗口选项，主要为要显示的信息类型
+ * @return {object} 包含窗口标题、页面片段的信息的窗口对象
+ */
+var createDialog = function (data) {
+    var item = {};
+    var tmplFile = FM.uikit.Config.getUtilityTemplate(data.type);
+    item.title = FM.uikit.Config.getUtilityName(data.type);
+    item.ctrl = appPath.scripts + tmplFile.ctrl;
+    item.tmpl = appPath.scripts + tmplFile.tmpl;
+    item.options = FM.Util.clone(defaultDialogOptions);
+    getDlgOptions(data.type, item.options);
+
+    return item;
+};
+</code></pre></li>
+<li><p>无返回值的情况</p>
+<pre><code>/**
+ * 模型转换主函数，将接口返回的数据转换为前端数据模型
+ * -author ChenXiao
+ * -date   2017-09-11
+ * @param  {object} data 接口返回的数据
+ * @return {undefined}
+ */
+setAttributes: function (data) {
+    this.geoLiveType = &apos;RDRESTRICTIONDETAIL&apos;;
+    this.pid = data.pid || 0;
+    this.restricPid = data.restricPid || 0;
+    this.outLinkPid = data.outLinkPid || 0;
+</code></pre><blockquote>
+<p>函数注释中，jsdoc要求必须有@return，因此无返回值时, return的类型要写为undefined。</p>
+</blockquote>
+</li>
+<li><p>无参数有返回值</p>
+<pre><code>/**
+ * 将前端数据模型还原为接口数据模型
+ * -author ChenXiao
+ * -date   2017-09-11
+ * @return {Object} 接口数据模型
+ */
+ getIntegrate: function () {
+     var data = {};
+     data.pid = this.pid;
+</code></pre><h1 id="公共变量的注释"><a href="#公共变量的注释" class="headerlink" title="公共变量的注释"></a>公共变量的注释</h1><p>公共变量我们分为三种，一种是全局变量（window下的），一种是类中的全局变量（如controller中），这两种必须加注释，第三种就是除了前两种之外的其他情况（比如一个函数中定义了多个内部函数，共享一变量），这种加不加注释可以视情况而定。注释规范如下：</p>
+</li>
+<li><p>单行注释</p>
+<pre><code>// 右侧面板是否开启标识
+$scope.rightPanelFlag = false;
+// 右侧浮动面板是否开启标识
+$scope.rightFloatPanelFlag = false;
+// 所有其他的右侧浮动面板
+$scope.mapToolbarPanelFlag = false;
+$scope.clmPanelOpened = false;
+</code></pre></li>
+<li><p>多行注释</p>
+<pre><code>/* 右侧面板总控标识, 右侧面板对于页面的布局很重要，
+加一个总控有可能在子页面种打开/关闭右侧面板 */
+$scope.rightPanelOpened = false;
+
+// 将页面loading动画的开关引用赋给dsEdit的本地变量，以便在dsEdit中进行控制
+// 注意：这里利用了对象引用的特性，变量必须是个对象，不能是字符串、bool、数字等
+$scope.loading = {
+    flag: false
+};
+</code></pre></li>
+</ul>
+<h1 id="IDE中安装jsdoc辅助工具"><a href="#IDE中安装jsdoc辅助工具" class="headerlink" title="IDE中安装jsdoc辅助工具"></a>IDE中安装jsdoc辅助工具</h1><ul>
+<li>sublime<br>安装docBlockr<br>安装fileHeader</li>
+<li>webstorm<br>请补充</li>
+<li>vscode<br>请补充</li>
+</ul>
+<h1 id="jsdoc生成器"><a href="#jsdoc生成器" class="headerlink" title="jsdoc生成器"></a>jsdoc生成器</h1><ul>
+<li>npm安装<pre><code>npm install -g jsdoc
+</code></pre>参考<a href="https://www.npmjs.com/package/jsdoc" target="_blank" rel="noopener">npm jsdoc</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编码规范/" rel="tag"># 编码规范</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/09/Web组工作安排/" rel="next" title="Web组工作安排">
+                <i class="fa fa-chevron-left"></i> Web组工作安排
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/18/sublime的自动注释配置/" rel="prev" title="sublime的自动注释配置">
+                sublime的自动注释配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <p class="site-author-name" itemprop="name">MadShawn</p>
+            <p class="site-description motion-element" itemprop="description">不知道要写点啥</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/./archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件注释-（必须有）"><span class="nav-number">2.</span> <span class="nav-text">文件注释 （必须有）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类注释-（必须有，可以替代文件注释）"><span class="nav-number">3.</span> <span class="nav-text">类注释 （必须有，可以替代文件注释）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数注释-（必须有）"><span class="nav-number">4.</span> <span class="nav-text">函数注释 （必须有）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公共变量的注释"><span class="nav-number">5.</span> <span class="nav-text">公共变量的注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDE中安装jsdoc辅助工具"><span class="nav-number">6.</span> <span class="nav-text">IDE中安装jsdoc辅助工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jsdoc生成器"><span class="nav-number">7.</span> <span class="nav-text">jsdoc生成器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MadShawn</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
